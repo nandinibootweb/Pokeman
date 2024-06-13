@@ -8,7 +8,7 @@ import { createPokemonCard } from "./modules/ui.js";
 // fetchItems("https://pokeapi.co/api/v2/", "limit=5");
 
 window.addEventListener("load", async () => {
-let counter=10;
+let counter=21;
 const pokemons=[];
 for (let i = 1; i <= counter; i++) {
   const pokemonData = await fetchPokemon(
