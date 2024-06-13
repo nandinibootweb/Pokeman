@@ -38,11 +38,11 @@ export function createPokemonCard(pokemon) {
   );
 
      button.addEventListener("click", () => {
-       addToStorage(pokemon, "favorites");
+       addToStorage(pokemon, "favoritePokemon");
      });
 
   button.onclick = (e) => {
-    addToStorage(pokemon, "favorites");
+    addToStorage(pokemon, "favoritePokemon");
     button.innerHTML='Added to favorites!';
   };
 
