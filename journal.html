@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="h-screen">
     <nav class="bg-blue-500 p-4">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-white text-2xl">Our Journal</h1>
@@ -19,14 +19,15 @@
         </div>
     </nav>
 
-    <div class="container mx-auto mt-8 pb-5">
+    <div class="container mx-auto mt-8 min-h-screen">
         <h2 class="text-2xl mb-4">Favorite Pokemon</h2>
         <div id="favoritePokemon" class="grid lg:grid-cols-4 grid-cols-2 gap-4"></div>
     </div>
 
-    <footer class="pb-10 bg-blue-500">
-
-
+    <footer class="h-10 bg-blue-500 mt-5">
+        <div class="flex items-center justify-center h-full text-white">
+            &copy; 2024 Your Company Name. All rights reserved.
+        </div>
     </footer>
 
     <script src="journal.js"></script>
