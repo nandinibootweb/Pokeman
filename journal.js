@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', async function ()
 {
     const favoritePokemon = JSON.parse(localStorage.getItem('favoritePokemon')) || ['pikachu', 'bulbasaur', 'charmander', 'squirtle'];
-
+    for (let i = 1; i < favoritePokemon.length; i++) {
+        console.log(favoritePokemon[i].id)
+      }
     const renderPokemon = async () =>
     {
         const favoritePokemonContainer = document.getElementById('favoritePokemon');
