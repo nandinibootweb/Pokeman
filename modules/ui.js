@@ -17,7 +17,7 @@ export function createPokemonCard(pokemon) {
     pokemon.stats.forEach(stat =>
     {
         const statItem = document.createElement('li');
-        statItem.classList.add('text-sm','p-0.5','text-gray-900','font-medium','text-center','border-2','hover:border-4','shadow-inner')
+        statItem.classList.add('text-sm','px-1','py-[0.2rem]','text-gray-900','font-medium','text-center','uppercase','border-2','hover:border-4','shadow-inner')
         statItem.textContent = `${stat.stat.name}: ${stat.base_stat}`;
         stats.appendChild(statItem);
     });
