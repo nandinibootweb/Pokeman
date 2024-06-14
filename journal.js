@@ -1,11 +1,14 @@
+import { getAllPokemonNames } from "./modules/storage.js";
+
 document.addEventListener('DOMContentLoaded', async function ()
 {
-    const favoritePokemon = JSON.parse(localStorage.getItem('favoritePokemon')) || ['pikachu', 'bulbasaur', 'charmander', 'squirtle'];
-   
-   
+    const key = 'favoritePokemon';
+
+    const favoritePokemon = getAllPokemonNames(key) || [];
+
     const renderPokemon = async () =>
     {
-        const favoritePokemonContainer = document.getElementById('favoritePokemon');
+        const favoritePokemonContainer = document.getElementById(key);
         favoritePokemonContainer.innerHTML = '';
 
         if (favoritePokemon.length === 0)
@@ -21,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function ()
         {
             try
             {
-                
+
                 const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
                 if (!response.ok) throw new Error('Network response was not ok.');
 
