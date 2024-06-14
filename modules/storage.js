@@ -9,6 +9,17 @@ export function addToStorage(pokemon, key)
   localStorage.setItem(key, JSON.stringify(pokemonArr));
 }
 
+export function removeFromStorage(id, key)
+{
+  console.log(id, key);
+  // Get the pokemons from localStorage and parse them, if there are no items then assign an empty array to the variable
+  const pokemonArr = JSON.parse(localStorage.getItem(key)) || [];
+  // Filter out the pokemon with the specified id
+  const updatedPokemonArr = pokemonArr.filter(pokemon => pokemon.id !== id);
+  // Update the localStorage with the new array
+  localStorage.setItem(key, JSON.stringify(updatedPokemonArr));
+}
+
 export function getAllPokemonNames(key)
 {
   let pokemonIds = new Set();
@@ -27,4 +38,10 @@ export function getAllPokemonNames(key)
 
   console.log("uniquePokemonIds: ", uniquePokemonIds);
   return uniquePokemonIds;
+}
+
+export function isAddedToStorage(id, key)
+{
+  const pokemonArr = JSON.parse(localStorage.getItem(key)) || [];
+  return pokemonArr.some(pokemon => pokemon.id === id);
 }
