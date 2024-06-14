@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokeman</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <header class="bg-[#EFFFF4]">
-      <nav id="n1" class="flex justify-between items-center px-32 py-2">
-        <div class="flex space-x-4 gap-16">
-          <a href="index.html">Home</a>
-          <a href="journal.html">Journal</a>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <section>
-        <div class="py-6">
-          <div>
-            <form>
-              <label for="Search-input" hidden>Pokeman</label>
-              <input
-                class="mx-4"
-                type="text"
-                name=""
-                id="Search-input "
-                placeholder="Pokeman"
-              />
-              <button
-                type="submit"
-                id="submit-button "
-                class="bg-[#4FF8] px-2 mx-8 py-2 gap-6"
-              >
-                Search
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div id="pokemons-container" class="grid grid-cols-3 lg:grid-cols-5 gap-4 w-screen px-2 bg-slate-50">
-          
-        </div>
-      </section>
 
-      <script type='module' src="main.js"></script>
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokeman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="h-screen">
+  <nav class="bg-blue-500 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-white text-2xl">Home</h1>
+      <div class="p-4">
+        <a href="index.html" class="text-white p-6">Home</a>
+        <a href="journal.html" class="text-white p-6">Journal</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="py-6">
+        <div>
+          <form>
+            <label for="Search-input" hidden>Pokeman</label>
+            <input class="mx-4" type="text" name="" id="Search-input " placeholder="Pokeman" />
+            <button type="submit" id="submit-button " class="bg-[#4FF8] px-2 mx-8 py-2 gap-6">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div id="pokemons-container" class="grid grid-cols-3 lg:grid-cols-5 gap-4 w-screen px-2 bg-slate-50">
+
+      </div>
+    </section>
+
+    <script type='module' src="main.js"></script>
+  </main>
+</body>
+
+<footer class="h-10 bg-blue-500 mt-5">
+  <div class="flex items-center justify-center h-full text-white">
+    &copy; 2024 Your Company Name. All rights reserved.
+  </div>
+</footer>
+
 </html>
