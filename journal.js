@@ -1,9 +1,9 @@
-import { getAllPokemonNames } from "./modules/storage.js";
+import { addToStorage, getAllPokemonNames, removeFromStorage } from "./modules/storage.js";
+
+const key = 'favoritePokemon';
 
 document.addEventListener('DOMContentLoaded', async function ()
 {
-    const key = 'favoritePokemon';
-
     const favoritePokemon = getAllPokemonNames(key) || [];
 
     const renderPokemon = async () =>
@@ -30,30 +30,7 @@ document.addEventListener('DOMContentLoaded', async function ()
 
                 const data = await response.json();
 
-                const card = document.createElement('div');
-                card.classList.add('p-4', 'bg-gray-100', 'rounded', 'shadow');
-
-                const image = document.createElement('img');
-                image.src = data.sprites.front_default;
-                image.alt = data.name;
-                image.classList.add('w-full', 'mb-2');
-
-                const name = document.createElement('h3');
-                name.textContent = data.name;
-                name.classList.add('text-xl', 'font-semibold', 'text-center');
-
-                const stats = document.createElement('ul');
-                stats.classList.add('text-sm', 'text-gray-700');
-                data.stats.forEach(stat =>
-                {
-                    const statItem = document.createElement('li');
-                    statItem.textContent = `${stat.stat.name}: ${stat.base_stat}`;
-                    stats.appendChild(statItem);
-                });
-
-                card.appendChild(image);
-                card.appendChild(name);
-                card.appendChild(stats);
+                const card = CreateCard(data);
 
                 favoritePokemonContainer.appendChild(card);
             } catch (error)
@@ -65,3 +42,52 @@ document.addEventListener('DOMContentLoaded', async function ()
 
     renderPokemon();
 });
+
+function CreateCard(data)
+{
+    const card = document.createElement('div');
+    card.classList.add('p-4', 'bg-gray-100', 'rounded', 'shadow', 'relative');
+
+    const toggleButton = document.createElement('button');
+    toggleButton.textContent = '❤️';
+    toggleButton.classList.add('absolute', 'top-2', 'right-2', 'text-xl', 'focus:outline-none');
+
+    toggleButton.addEventListener('click', () =>
+    {
+        toggleButton.classList.toggle('active');
+        if (toggleButton.classList.contains('active'))
+        {
+            toggleButton.textContent = '💔';
+            removeFromStorage(data.id, key);
+        } else
+        {
+            toggleButton.textContent = '❤️';
+            addToStorage(data, key);
+        }
+    });
+
+    const image = document.createElement('img');
+    image.src = data.sprites.front_default;
+    image.alt = data.name;
+    image.classList.add('w-full', 'mb-2');
+
+    const name = document.createElement('h3');
+    name.textContent = data.name;
+    name.classList.add('text-xl', 'font-semibold', 'text-center');
+
+    const stats = document.createElement('ul');
+    stats.classList.add('text-sm', 'text-gray-700');
+    data.stats.forEach(stat =>
+    {
+        const statItem = document.createElement('li');
+        statItem.textContent = `${stat.stat.name}: ${stat.base_stat}`;
+        stats.appendChild(statItem);
+    });
+
+    card.appendChild(toggleButton); // Add toggle button to the card
+    card.appendChild(image);
+    card.appendChild(name);
+    card.appendChild(stats);
+    return card;
+}
+
