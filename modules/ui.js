@@ -3,6 +3,8 @@ const key = 'favoritePokemon';
 
 export function createPokemonCard(pokemon)
 {
+
+  //creating our pokemon card
   const card = document.createElement('div');
   card.classList.add('p-4', 'bg-gray-100', 'rounded', 'shadow', 'hover:scale-[1.05]', 'flex', 'flex-col', 'items-center', 'drop-shadow-lg');
 
@@ -25,7 +27,7 @@ export function createPokemonCard(pokemon)
     stats.appendChild(statItem);
   });
 
-
+//creating ''favorite' button
   const button = document.createElement("button");
   button.innerText = "Favorite";
   button.classList.add(
@@ -40,9 +42,18 @@ export function createPokemonCard(pokemon)
 
   );
 
-  /*    button.addEventListener("click", () => {
+  //button listener that confirms adding to favorites, else logs an error
+
+     /* button.addEventListener("click", () => {
+    try{
         addToStorage(pokemon, "favoritePokemon");
+        console.log('Added to favorites!');}
+        catch (error){
+        console.log('ERROR:  ' + error)}
       }); */
+
+  //button on click adds the pokemon to 'favoritePokemon" in local
+  //storage and changes buttons name to 'added to favorites'
 
   button.onclick = (e) =>
   {

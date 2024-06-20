@@ -2,10 +2,12 @@ import { addToStorage } from "./modules/storage.js";
 import { fetchPokemon } from "./modules/fetch.js";
 import { createPokemonCard } from "./modules/ui.js";
 
-// fetchItems("https://pokeapi.co/api/v2/", "limit=5");
+// fetchPokemon("https://pokeapi.co/api/v2/", i);
+// counter defines how many pokemons will be fetched 
 
 window.addEventListener("load", async () => {
   let counter = 21;
+  //create an array where our pokemon will be stored
   const pokemons = [];
   for (let i = 1; i <= counter; i++) {
     const pokemonData = await fetchPokemon(
@@ -15,23 +17,17 @@ window.addEventListener("load", async () => {
     pokemons.push(pokemonData);
   }
 
-  console.log(pokemons);
+  //console.log(pokemons);
+  //logs our pokemons
+
+
+  //creates new pokemon card for every pokemon that is in the array
   for (let i = 0; i < pokemons.length; i++) {
     createPokemonCard(pokemons[i]);
   }
 });
 
-// let search = "";
-// const input = document.querySelector("input");
-// input.oninput = (e) => {
-//   search = e.target.value;
-// };
 
-// const form = document.querySelector("form");
-// form.onsubmit = (e) => {
-//   e.preventDefault();
-//   console.log(search);
-// };
 const nbt = document.getElementById("subbtn");
 const ninput = document.querySelector("#Search-input");
 const showSearch = document.querySelector("#show");

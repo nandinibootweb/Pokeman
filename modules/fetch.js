@@ -10,5 +10,6 @@ export async function fetchPokemon(url, query) {
     }
   }
    
-
+//fetches pokemon ("https://pokeapi.co/api/v2/", query)
+   //if an error occurs logs it in the console
   
